@@ -2,9 +2,10 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Открытка папе на 23 февраля</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>папе на 23 февраля 📱</title>
     <style>
+        /* Абсолютно гибкий сброс и база */
         * {
             margin: 0;
             padding: 0;
@@ -12,213 +13,247 @@
         }
 
         body {
-            font-family: 'Segoe UI', 'Arial', sans-serif;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
             min-height: 100vh;
-            background: linear-gradient(145deg, #0b2a3e 0%, #1b4f6e 100%);
             display: flex;
             justify-content: center;
             align-items: center;
+            background: radial-gradient(circle at 30% 20%, #1f4e6f, #0a2a3b);
+            padding: 10px;
             margin: 0;
-            padding: 16px;
+            /* убираем лишние скроллы */
+            overflow-x: hidden;
         }
 
-
+        /* обёртки страниц — адаптивные карточки */
         .page {
-            max-width: 650px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(4px);
-            border-radius: 48px;
-            padding: 24px;
-            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 215, 0, 0.2) inset;
-            transition: opacity 0.5s ease, transform 0.4s ease;
+            max-width: 480px; /* комфортная ширина для телефонов, но не растягивается */
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(3px);
+            border-radius: 60px 60px 40px 40px;
+            padding: 15px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
+            transition: opacity 0.3s ease;
         }
 
+        #page1 { display: block; }
+        #page2 { display: none; }
 
-        #page1 {
-            display: block;
-        }
-
-
-        #page2 {
-            display: none;
-        }
-
-
-        .card-envelope {
-            background: #f9f3e7;
-            background-image: radial-gradient(circle at 20px 30px, #f0e4d0 2px, transparent 2px),
-                              radial-gradient(circle at 70px 110px, #f0e4d0 2px, transparent 2px);
-            background-size: 60px 60px;
-            border-radius: 40px 40px 40px 40px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3), 0 8px 0 #6a4e3b inset, 0 -8px 0 #6a4e3b inset;
-            border: 6px solid #b8865b;
+        /* ----- СТРАНИЦА 1 (конверт) ----- */
+        .envelope {
+            background: #fcf3e1;
+            background-image: radial-gradient(circle at 10px 10px, #eddbbd 2px, transparent 3px);
+            background-size: 35px 35px;
+            border-radius: 50px 50px 35px 35px;
+            padding: 25px 20px 30px;
+            border: 5px solid #b77c48;
+            box-shadow: 0 12px 0 #6d4c2e inset, 0 -8px 0 #6d4c2e inset, 0 12px 20px #00000055;
             position: relative;
-            transition: transform 0.2s;
+            text-align: center;
         }
 
-        .card-envelope::before {
+        .envelope::after {
             content: "✧ ✦ ✧";
-            font-size: 28px;
-            color: #c96e2b;
-            letter-spacing: 12px;
+            font-size: 1.8rem;
+            color: #c57c2c;
+            background: #fcf3e1;
+            padding: 0 15px;
             position: absolute;
-            top: -18px;
+            top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            background: #f9f3e7;
-            padding: 0 20px;
-            text-shadow: 0 2px 5px gold;
+            white-space: nowrap;
+            letter-spacing: 6px;
+            text-shadow: 0 2px 5px #e3a130;
         }
 
         .envelope-text {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #2a4b5c;
-            text-shadow: 2px 2px 0 #e1c59b;
-            background: rgba(255, 240, 200, 0.5);
-            padding: 20px 15px;
-            border-radius: 60px;
-            border: 3px dashed #d48d4b;
-            margin-bottom: 35px;
+            font-size: clamp(1.8rem, 9vw, 2.8rem); /* адаптивный размер */
+            font-weight: 900;
+            color: #0f3f54;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0 #f5cb8b;
+            background: #faeacd;
+            padding: 20px 12px;
+            border-radius: 50px;
+            border: 4px dashed #d68b42;
+            margin: 20px 0 25px;
+            line-height: 1.3;
             word-break: break-word;
         }
 
         .open-btn {
-            background: #e7a13d;
+            background: #fcb13b;
             border: none;
-            font-size: 2rem;
-            font-weight: bold;
-            padding: 20px 55px;
-            border-radius: 60px;
-            color: #1e2f3b;
-            border-bottom: 8px solid #9f5f2c;
-            box-shadow: 0 10px 15px rgba(0,0,0,0.3), 0 0 0 3px #fce8b4 inset;
+            width: 100%;
+            font-size: clamp(2rem, 10vw, 3rem);
+            font-weight: 800;
+            padding: 18px 10px;
+            border-radius: 70px;
+            color: #202f38;
+            border-bottom: 9px solid #9f632a;
+            box-shadow: 0 10px 0 #c57e2f, 0 8px 15px black;
             cursor: pointer;
-            transition: 0.1s linear;
-            letter-spacing: 4px;
-            margin-top: 10px;
+            transition: 0.05s linear;
+            letter-spacing: 3px;
+            margin: 15px 0 5px;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .open-btn:active {
-            transform: translateY(6px);
-            border-bottom-width: 2px;
+            transform: translateY(7px);
+            border-bottom-width: 3px;
         }
 
-        .congrat-card {
-            background: #f4f0db;
-            background-image: repeating-linear-gradient(45deg, rgba(180, 140, 80, 0.1) 0px, rgba(180, 140, 80, 0.1) 20px, rgba(230, 200, 140, 0.1) 20px, rgba(230, 200, 140, 0.1) 40px);
-            border-radius: 48px;
-            padding: 35px 25px 45px;
-            border: 8px solid #a86f3c;
-            box-shadow: 0 25px 0 #4a3622, 0 30px 25px black;
+        .small-hint {
+            font-size: 1.3rem;
+            color: #2a2f0b;
+            opacity: 0.9;
+            margin-top: 18px;
+            background: #e7cba5;
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+        }
+
+        /* ----- СТРАНИЦА 2 (открытка с рисунками) ----- */
+        .card {
+            background: #fbf3e2;
+            border-radius: 60px 60px 40px 40px;
+            padding: 24px 16px 30px;
+            border: 7px solid #c28954;
+            box-shadow: 0 18px 0 #7a572f, 0 25px 25px #0000004d;
             text-align: center;
         }
 
-        .military-doodles {
+        /* рисунки-иконки — адаптивная сетка */
+        .doodle-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            align-items: center;
-            gap: 12px 20px;
-            margin-bottom: 20px;
-            font-size: 3.2rem;
+            gap: 10px 12px;
+            margin-bottom: 15px;
         }
 
         .doodle-item {
-            background: #6a4d3b60;
-            padding: 10px 15px;
-            border-radius: 80px;
-            backdrop-filter: blur(4px);
-            background: #f2dbc0;
-            box-shadow: 0 6px 0 #84613e, 0 8px 12px black;
-            transform: rotate(0deg);
-            transition: 0.2s;
+            background: #efdbb2;
+            padding: 12px 16px;
+            border-radius: 60px;
+            border: 3px solid #d6a25d;
+            box-shadow: 0 5px 0 #8b623f, 0 6px 10px black;
+            font-size: clamp(1.4rem, 5vw, 2rem);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: 2rem;
-            border: 2px solid #eeb76b;
+            gap: 6px;
+            font-weight: 600;
+            color: #1b3f2b;
+            flex: 0 1 auto;
         }
 
         .doodle-item span {
-            font-size: 2.6rem;
+            font-size: 2rem;
             line-height: 1;
         }
 
-        .main-title {
-            font-size: 2.8rem;
+        /* главное поздравление */
+        .hero-text {
+            font-size: clamp(2.2rem, 8vw, 3.2rem);
             font-weight: 900;
-            color: #1f3a49;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, #c99b3b, #9b6b2b);
+            line-height: 1.3;
+            background: linear-gradient(145deg, #1d5a7a, #962d2d);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 4px 4px 0 #ffe49e, 6px 6px 0 rgba(0,0,0,0.2);
-            margin: 25px 0 15px;
-            letter-spacing: 2px;
-            line-height: 1.2;
+            text-shadow: 3px 3px 0 #ffc107, 5px 5px 0 rgba(0,0,0,0.2);
+            margin: 20px 0 15px;
+            text-transform: uppercase;
+            word-break: break-word;
         }
 
-        .special-words {
-            font-size: 2.2rem;
+        .heart-message {
+            font-size: clamp(1.8rem, 7vw, 2.5rem);
+            background: #d3f0d3;
+            padding: 15px 10px;
+            border-radius: 60px;
+            border: 5px double #d49b4a;
+            color: #145a32;
             font-weight: 800;
-            color: #2b5e3b;
-            background: #fffaec;
-            padding: 18px 12px;
-            border-radius: 100px;
-            border: 5px double #d48b2c;
-            display: inline-block;
-            box-shadow: 0 0 0 4px #fad68f;
-            margin: 20px 0 10px;
+            margin: 20px 0;
+            box-shadow: 0 0 0 4px #fde3a7;
         }
 
-        .medals {
+        .extra-icons {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            margin: 25px 0 10px;
-            font-size: 2.8rem;
+            gap: 12px;
+            font-size: 2.5rem;
+            margin: 25px 0 15px;
+            background: #fbe8c9;
+            padding: 16px 10px;
+            border-radius: 50px;
         }
 
         .signature {
             font-size: 1.8rem;
-            color: #3a240b;
             font-style: italic;
-            background: #dbb47a70;
-            padding: 10px;
-            border-radius: 30px;
-            margin-top: 25px;
-            border: 2px solid gold;
+            background: #bfa888;
+            color: #231c0f;
+            padding: 14px;
+            border-radius: 40px;
+            margin: 20px 0 10px;
+            border: 3px solid #f5c84e;
         }
 
-        @media (max-width: 500px) {
-            .envelope-text { font-size: 1.6rem; }
-            .open-btn { font-size: 1.5rem; padding: 15px 30px; }
-            .main-title { font-size: 2rem; }
-            .special-words { font-size: 1.8rem; }
-            .military-doodles { font-size: 2.5rem; }
+        .back-btn {
+            background: #ffe2ab;
+            border: 5px solid #ad7b48;
+            font-size: 2rem;
+            font-weight: bold;
+            padding: 16px 10px;
+            width: 100%;
+            border-radius: 50px;
+            color: #3f2f1a;
+            box-shadow: 0 7px 0 #7a613c;
+            cursor: pointer;
+            transition: 0.05s linear;
+            margin-top: 25px;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .back-btn:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #7a613c;
+        }
+
+        /* убираем скролл, если что-то вылезает */
+        img, svg {
+            max-width: 100%;
         }
     </style>
 </head>
 <body>
 
+    <!-- СТРАНИЦА 1: телефонный "конверт" -->
     <div id="page1" class="page">
-        <div class="card-envelope">
+        <div class="envelope">
             <div class="envelope-text">
-                📬 ВАМ ПРИШЛА<br>ОТКРЫТКА <span style="font-size:1.2em;">🎖️</span><br>НА 23 ФЕВРАЛЯ
+                📬 ВАМ ПРИШЛА<br>ОТКРЫТКА НА 23 февраля
             </div>
-            <button class="open-btn" id="openBtn">✧ ОТКРЫТЬ ✧</button>
-            <div style="margin-top: 25px; font-size: 1.5rem; opacity: 0.7;">⭐ для самого лучшего папы ⭐</div>
+            <button class="open-btn" id="openBtnMobile">✧ОТКРЫТЬ✧</button>
+            <div class="small-hint">
+                🎖️ папе 🎖️
+            </div>
         </div>
     </div>
 
+    <!-- СТРАНИЦА 2: открытка для папы (мобильная) -->
     <div id="page2" class="page">
-        <div class="congrat-card">
+        <div class="card">
 
-            <div class="military-doodles">
+            <!-- много рисунков, но без переполнения -->
+            <div class="doodle-grid">
                 <div class="doodle-item"><span>⚓</span> </div>
                 <div class="doodle-item"><span>✈️</span> </div>
                 <div class="doodle-item"><span>🚁</span> </div>
@@ -232,32 +267,30 @@
                 <div class="doodle-item"><span>🌿</span> </div>
             </div>
 
-
-            <div class="main-title">
+            <!-- главный текст (чётко и крупно) -->
+            <div class="hero-text">
                 С 23 ФЕВРАЛЯ,<br>САМОМУ ЛУЧШЕМУ И ЛЮБИМОМУ ПАПЕ!
             </div>
 
-
-            <div class="medals">
-                <span>🏅</span> <span>⭐</span> <span>🎗️</span> <span>🔰</span> <span>🎖️</span>
+            <!-- звёздочки и медали -->
+            <div class="extra-icons">
+                <span>🏅</span> <span>⭐</span> <span>🎗️</span> <span>🔰</span> <span>🎖️</span> <span>💥</span>
             </div>
 
-            <div class="special-words">
-                ❤️  Ты — наша гордость и защита!  ❤️
+            <div class="heart-message">
+                ❤️ ТЫ НАША ЗАЩИТА ❤️
             </div>
 
-
-            <div style="display: flex; justify-content: center; gap: 10px; font-size: 2rem; flex-wrap: wrap; margin: 10px 0;">
-                <span>⚡</span><span>💪</span><span>🧰</span><span>🧭</span><span>🗺️</span><span>🚤</span>
+            <!-- ещё маленькие значки -->
+            <div style="font-size: 2.2rem; margin: 15px 0; letter-spacing: 6px;">
+                ⚡💪🧰🧭🗺️🚤
             </div>
 
             <div class="signature">
-                с любовью, твоя доча 💖
+                С любовью, твоя доча 💖
             </div>
 
-            <div style="margin-top: 25px;">
-                <button id="backBtn" style="background: none; border: 3px solid #ac7339; font-size: 1.5rem; padding: 10px 25px; border-radius: 50px; background: #eedbba; color: #3d2b12; font-weight: bold; cursor: pointer; box-shadow: 0 6px 0 #826b44;">🔙 посмотреть конверт</button>
-            </div>
+            <button class="back-btn" id="backBtnMobile">🔙 назад к конверту</button>
         </div>
     </div>
 
@@ -265,44 +298,46 @@
         (function() {
             const page1 = document.getElementById('page1');
             const page2 = document.getElementById('page2');
-            const openBtn = document.getElementById('openBtn');
-            const backBtn = document.getElementById('backBtn');
+            const openBtn = document.getElementById('openBtnMobile');
+            const backBtn = document.getElementById('backBtnMobile');
 
-
-            openBtn.addEventListener('click', function() {
+            // обработчики с плавностью для тач-устройств
+            openBtn.addEventListener('click', function(e) {
+                e.preventDefault();
                 page1.style.opacity = '0';
-
                 setTimeout(() => {
                     page1.style.display = 'none';
                     page2.style.display = 'block';
-
                     setTimeout(() => {
                         page2.style.opacity = '1';
-                    }, 20);
-                }, 300);
-
-                page1.style.transition = 'opacity 0.3s';
-                page2.style.transition = 'opacity 0.5s';
+                    }, 30);
+                }, 250);
+                page1.style.transition = 'opacity 0.2s';
+                page2.style.transition = 'opacity 0.3s';
                 page2.style.opacity = '0';
             });
 
-            backBtn.addEventListener('click', function() {
+            backBtn.addEventListener('click', function(e) {
+                e.preventDefault();
                 page2.style.opacity = '0';
                 setTimeout(() => {
                     page2.style.display = 'none';
                     page1.style.display = 'block';
                     setTimeout(() => {
                         page1.style.opacity = '1';
-                    }, 20);
-                }, 300);
+                    }, 30);
+                }, 250);
                 page1.style.opacity = '0';
             });
 
+            // установка начальной прозрачности
             page1.style.opacity = '1';
             page2.style.opacity = '1';
+
+            // мобильная подсказка: убираем двойной тап-зум (не мешает)
         })();
     </script>
 
-  
+    <!-- добавочка для совсем маленьких экранов (плавные скругления) -->
 </body>
 </html>
