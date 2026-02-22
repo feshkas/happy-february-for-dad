@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Открытка папе на 23 февраля</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(145deg, #0b2a3e 0%, #1b4f6e 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 16px;
+        }
+
+
+        .page {
+            max-width: 650px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            border-radius: 48px;
+            padding: 24px;
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 215, 0, 0.2) inset;
+            transition: opacity 0.5s ease, transform 0.4s ease;
+        }
+
+
+        #page1 {
+            display: block;
+        }
+
+
+        #page2 {
+            display: none;
+        }
+
+
+        .card-envelope {
+            background: #f9f3e7;
+            background-image: radial-gradient(circle at 20px 30px, #f0e4d0 2px, transparent 2px),
+                              radial-gradient(circle at 70px 110px, #f0e4d0 2px, transparent 2px);
+            background-size: 60px 60px;
+            border-radius: 40px 40px 40px 40px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3), 0 8px 0 #6a4e3b inset, 0 -8px 0 #6a4e3b inset;
+            border: 6px solid #b8865b;
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .card-envelope::before {
+            content: "✧ ✦ ✧";
+            font-size: 28px;
+            color: #c96e2b;
+            letter-spacing: 12px;
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #f9f3e7;
+            padding: 0 20px;
+            text-shadow: 0 2px 5px gold;
+        }
+
+        .envelope-text {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #2a4b5c;
+            text-shadow: 2px 2px 0 #e1c59b;
+            background: rgba(255, 240, 200, 0.5);
+            padding: 20px 15px;
+            border-radius: 60px;
+            border: 3px dashed #d48d4b;
+            margin-bottom: 35px;
+            word-break: break-word;
+        }
+
+        .open-btn {
+            background: #e7a13d;
+            border: none;
+            font-size: 2rem;
+            font-weight: bold;
+            padding: 20px 55px;
+            border-radius: 60px;
+            color: #1e2f3b;
+            border-bottom: 8px solid #9f5f2c;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3), 0 0 0 3px #fce8b4 inset;
+            cursor: pointer;
+            transition: 0.1s linear;
+            letter-spacing: 4px;
+            margin-top: 10px;
+        }
+
+        .open-btn:active {
+            transform: translateY(6px);
+            border-bottom-width: 2px;
+        }
+
+        .congrat-card {
+            background: #f4f0db;
+            background-image: repeating-linear-gradient(45deg, rgba(180, 140, 80, 0.1) 0px, rgba(180, 140, 80, 0.1) 20px, rgba(230, 200, 140, 0.1) 20px, rgba(230, 200, 140, 0.1) 40px);
+            border-radius: 48px;
+            padding: 35px 25px 45px;
+            border: 8px solid #a86f3c;
+            box-shadow: 0 25px 0 #4a3622, 0 30px 25px black;
+            text-align: center;
+        }
+
+        .military-doodles {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 12px 20px;
+            margin-bottom: 20px;
+            font-size: 3.2rem;
+        }
+
+        .doodle-item {
+            background: #6a4d3b60;
+            padding: 10px 15px;
+            border-radius: 80px;
+            backdrop-filter: blur(4px);
+            background: #f2dbc0;
+            box-shadow: 0 6px 0 #84613e, 0 8px 12px black;
+            transform: rotate(0deg);
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 2rem;
+            border: 2px solid #eeb76b;
+        }
+
+        .doodle-item span {
+            font-size: 2.6rem;
+            line-height: 1;
+        }
+
+        .main-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #1f3a49;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #c99b3b, #9b6b2b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 4px 4px 0 #ffe49e, 6px 6px 0 rgba(0,0,0,0.2);
+            margin: 25px 0 15px;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+
+        .special-words {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #2b5e3b;
+            background: #fffaec;
+            padding: 18px 12px;
+            border-radius: 100px;
+            border: 5px double #d48b2c;
+            display: inline-block;
+            box-shadow: 0 0 0 4px #fad68f;
+            margin: 20px 0 10px;
+        }
+
+        .medals {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0 10px;
+            font-size: 2.8rem;
+        }
+
+        .signature {
+            font-size: 1.8rem;
+            color: #3a240b;
+            font-style: italic;
+            background: #dbb47a70;
+            padding: 10px;
+            border-radius: 30px;
+            margin-top: 25px;
+            border: 2px solid gold;
+        }
+
+        @media (max-width: 500px) {
+            .envelope-text { font-size: 1.6rem; }
+            .open-btn { font-size: 1.5rem; padding: 15px 30px; }
+            .main-title { font-size: 2rem; }
+            .special-words { font-size: 1.8rem; }
+            .military-doodles { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="page1" class="page">
+        <div class="card-envelope">
+            <div class="envelope-text">
+                📬 ВАМ ПРИШЛА<br>ОТКРЫТКА <span style="font-size:1.2em;">🎖️</span><br>НА 23 ФЕВРАЛЯ
+            </div>
+            <button class="open-btn" id="openBtn">✧ ОТКРЫТЬ ✧</button>
+            <div style="margin-top: 25px; font-size: 1.5rem; opacity: 0.7;">⭐ для самого лучшего папы ⭐</div>
+        </div>
+    </div>
+
+    <div id="page2" class="page">
+        <div class="congrat-card">
+
+            <div class="military-doodles">
+                <div class="doodle-item"><span>⚓</span> </div>
+                <div class="doodle-item"><span>✈️</span> </div>
+                <div class="doodle-item"><span>🚁</span> </div>
+                <div class="doodle-item"><span>🛡️</span> </div>
+                <div class="doodle-item"><span>⚙️</span> </div>
+                <div class="doodle-item"><span>🔥</span> </div>
+                <div class="doodle-item"><span>🔫</span> </div>
+                <div class="doodle-item"><span>🚀</span> </div>
+                <div class="doodle-item"><span>🎖️</span> </div>
+                <div class="doodle-item"><span>🐻</span> </div>
+                <div class="doodle-item"><span>🌿</span> </div>
+            </div>
+
+
+            <div class="main-title">
+                С 23 ФЕВРАЛЯ,<br>САМОМУ ЛУЧШЕМУ И ЛЮБИМОМУ ПАПЕ!
+            </div>
+
+
+            <div class="medals">
+                <span>🏅</span> <span>⭐</span> <span>🎗️</span> <span>🔰</span> <span>🎖️</span>
+            </div>
+
+            <div class="special-words">
+                ❤️  Ты — наша гордость и защита!  ❤️
+            </div>
+
+
+            <div style="display: flex; justify-content: center; gap: 10px; font-size: 2rem; flex-wrap: wrap; margin: 10px 0;">
+                <span>⚡</span><span>💪</span><span>🧰</span><span>🧭</span><span>🗺️</span><span>🚤</span>
+            </div>
+
+            <div class="signature">
+                с любовью, твоя доча 💖
+            </div>
+
+            <div style="margin-top: 25px;">
+                <button id="backBtn" style="background: none; border: 3px solid #ac7339; font-size: 1.5rem; padding: 10px 25px; border-radius: 50px; background: #eedbba; color: #3d2b12; font-weight: bold; cursor: pointer; box-shadow: 0 6px 0 #826b44;">🔙 посмотреть конверт</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const page1 = document.getElementById('page1');
+            const page2 = document.getElementById('page2');
+            const openBtn = document.getElementById('openBtn');
+            const backBtn = document.getElementById('backBtn');
+
+
+            openBtn.addEventListener('click', function() {
+                page1.style.opacity = '0';
+
+                setTimeout(() => {
+                    page1.style.display = 'none';
+                    page2.style.display = 'block';
+
+                    setTimeout(() => {
+                        page2.style.opacity = '1';
+                    }, 20);
+                }, 300);
+
+                page1.style.transition = 'opacity 0.3s';
+                page2.style.transition = 'opacity 0.5s';
+                page2.style.opacity = '0';
+            });
+
+            backBtn.addEventListener('click', function() {
+                page2.style.opacity = '0';
+                setTimeout(() => {
+                    page2.style.display = 'none';
+                    page1.style.display = 'block';
+                    setTimeout(() => {
+                        page1.style.opacity = '1';
+                    }, 20);
+                }, 300);
+                page1.style.opacity = '0';
+            });
+
+            page1.style.opacity = '1';
+            page2.style.opacity = '1';
+        })();
+    </script>
+
+  
+</body>
+</html>
